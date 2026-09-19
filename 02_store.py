@@ -1,40 +1,36 @@
 #Estos son los datos asignados para las cajas con sus respectivos cajeros
 cajeros = { 
-    "241024": {"nombre": "Eliannis", "box": "1"},
-    "121212": {"nombre": "Jesus", "box": "2"},
-    "311005": {"nombre": "Alejandro", "box": "3"},
-    "1": {"nombre": "KRONNOS", "box": "PROGRAMADOR"}
+    "102938": {"nombre": "User1", "box": "1"},
+    "001199": {"nombre": "User2", "box": "2"},
+    "123456": {"nombre": "User3", "box": "3"},
+    "1": {"nombre": "Admin", "box": "PROGRAMADOR"}
 }
 
 # Estos son los productos disponibles en el sistema cada uno con un codigo y precio preestablecido
 items = {
-    "001":{"nombre": "Arroz La siembra 1kg", "precio": 2.4, "cod": "001"},
-    "002":{"nombre": "Pasta Horizonte 1kg", "precio": 2.5, "cod": "002"},
-    "003":{"nombre": "Azucar La Pastora 900g", "precio": 3, "cod": "003"},
-    "004":{"nombre": "Leche La Campiña 400g", "precio": 5.47, "cod": "004"},
-    "005":{"nombre": "Mantequilla Mavesa 250g", "precio": 2.25, "cod": "005"},
-    "006":{"nombre": "Aceite Vatel 1lt", "precio": 4, "cod": "006"},
-    "007":{"nombre": "Salsa Pampero 397ml", "precio": 1.27, "c": "007"},
-    "008":{"nombre": "Harina Pan 1kg", "precio": 0.87, "cod": "008"},
-    "009":{"nombre": "Sal Cristal 1kg", "precio": 0.5, "cod": "009"},
-    "010":{"nombre": "Sardina en aceite Peñero", "precio": 0.4, "cod": "010"},
+    "001":{"nombre": "Producto 1", "precio": 1},
+    "002":{"nombre": "Producto 2", "precio": 2},
+    "003":{"nombre": "Producto 3", "precio": 3},
+    "004":{"nombre": "Producto 4", "precio": 4},
+    "005":{"nombre": "Producto 5", "precio": 5},
+    "006":{"nombre": "Producto 6", "precio": 4.1},
+    "007":{"nombre": "Producto 7", "precio": 3.25},
+    "008":{"nombre": "Producto 8", "precio": 2.5},
+    "009":{"nombre": "Producto 9", "precio": 1.75},
+    "010":{"nombre": "Producto 10", "precio": 5.3},
 }
 
 factura = []
-
-list_i = ("001: arroz", "002: pasta", "003: azucar", 
-          "004: leche", "005: mantequilla", "006: aceite",
-          "007: salsa", "008: harina", "009: sal", "010: sardina")
 
 # Inicio del sistema con un modelo de login predeterminado
 atemps = 0 # Numero de intentos admitidos 
 veriy_c = False # Validacion por boolean
 veriy_p = False # Validacion de lista de productos
 total_n = 0
-empresa = "\t    Inversiones Shaddai C.A""\n\t         " \
-"J-89570221024\n\t    " \
-"San Juan  de los Morros""\n\t         " \
-"Edo.  Guárico"
+empresa = "\t    Inversiones ------- C.A""\n\t         " \
+"J-***********\n\t    " \
+"Ciudad que quiera int""\n\t         " \
+"Edo.  *******"
 saludo = "¡Gracias por su Compra!"
 
 # Bucle de Validacion de usuario
@@ -62,8 +58,15 @@ print("Si desea verificar el inventario presione: I \nSi desea publicar factura 
 while(atemps == False):
     code = input("Codigo del producto: ")
     if (code == "i" or code == 'I'):
-        print(list(list_i))
-
+        contador = 1
+        while contador <= 10:
+            impre = f"{contador:03d}"
+            print("-"*10, "Lista de Productos", "-"*10)
+            for impre in items:
+                flash = items[impre]
+                print(f"{impre} --- {flash['nombre']} --- {flash['precio']}")
+                contador += 1
+        print("-"*40)
     if (code == 'f' or code == 'F'):
         break
 
@@ -80,10 +83,10 @@ while(atemps == False):
             total_p = float(dato["precio"] * cant)
             total_n = total_n + total_p
             producto = {
-                "nombre" : {dato['nombre']},
-                "precio" : {dato['precio']},
-                "cantidad" : {cant},
-                "total" : {total_p}
+                "nombre" : f"{dato['nombre']}",
+                "precio" : f"{dato['precio']}",
+                "cantidad" : f"{cant}",
+                "total" : f"{total_p}"
             }
 
         elif(cant == 0):
