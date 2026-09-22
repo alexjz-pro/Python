@@ -56,8 +56,8 @@ while(atemps < 3 and veriy_c == False): # Mientras los intentos sean menores a 3
 print("Si desea verificar el inventario presione: I \nSi desea publicar factura presione: F")
 # Bucle de validacion productos 
 while(atemps == False):
-    code = input("Codigo del producto: ")
-    if (code == "i" or code == 'I'):
+    code = str.upper(input("Codigo del producto: "))
+    if (code == 'I'):
         contador = 1
         while contador <= 10:
             impre = f"{contador:03d}"
@@ -67,7 +67,7 @@ while(atemps == False):
                 print(f"{impre} --- {flash['nombre']} --- {flash['precio']}")
                 contador += 1
         print("-"*40)
-    if (code == 'f' or code == 'F'):
+    if (code == 'F'):
         break
 
     if code in items:
