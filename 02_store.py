@@ -1,3 +1,9 @@
+from datetime import datetime
+
+dt = datetime.now()
+
+h = dt.strftime("%-I:%M:%S%P")
+f = dt.strftime("%x")
 #Estos son los datos asignados para las cajas con sus respectivos cajeros
 cajeros = { 
     "102938": {"nombre": "User1", "box": "1"},
@@ -111,9 +117,9 @@ def imprimir():
     print(f" {empresa}")
     print(f"-"*50)
     if(key == "1"):
-        print(f"{name} : {caja}")
+        print(f"{name} : {caja} \nFecha: {f} \t\t   Hora: {h}")
     else:
-        print(f"Cajero: {name} \nCaja: #{caja}")
+        print(f"Cajero: {name} \nCaja: #{caja} \nFecha: {f} \t\t   Hora: {h}")
     print("-"*50)
 
     for producto in factura:
