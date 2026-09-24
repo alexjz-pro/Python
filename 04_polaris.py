@@ -11,95 +11,73 @@ print(" "*13,"¡Bienvenido a Polaris!")
 print("-"*8 + "Para buscar una carpeta escriba 'C'" + "-"*10)
 print("-"*9 + "Para buscar un Archivo escriba 'A'" + "-"*10)
 print("="*53)
-flecha = str.upper(input("Que elemento desea buscar?: "))
+buscar = str.upper(input("Que elemento desea buscar?: "))
 print("="*53)
 
-def buscar():
-    print("="*53)
-    if flecha == "C":
-        print(" "*15 + "Buscando tu Carpeta...")
-    elif flecha == "A":
-        print(" "*15 + "Buscando tu Archivo...")
-    print("-"*53)
+# para usar un elemento de la lista iniciamos en "0"
+textos = ["Buscando...", "Eureka!!!", "Bienvenido", "="*53, "Busquemos otra carpeta", "Cerrando P o l a r i s"]
 
-def nota():
-    print("Si no conoces el nombre exacto del archivo puedes \nbuscarlo colocando entre '*' una parte que recuerdes" \
-    "\n(ejemplo: *tech*, *.py*, *01_*)")
-    print("-"*53)
-    print("Atencion: ten en cuenta que pueden existir miles \n" \
-    "de archivos con ese aspecto en su nombre, asi que")
-    print(" "*15 + "USALO CON CUIDADO")
-    print("-"*53)
 
-i = 0
+def src_carpeta():
+    c_e = None
+    buscar_c = Path(input("Intoduzca el nombre de la Carpeta: "))
+    print(textos[0])
 
-def accion():
-    print("-"*53)
-    print(f"Cantidad de archivos encontrados: {i}")
-    print("-"*53)
-
-while flecha != "":
-    if flecha == "C":
-        src_carpeta = Path(input("Introduzca el nombre de la carpeta: "))
-        buscar()
-        break
-
-    elif flecha == "A":
-        nota()
-        src_archive = Path(input("Introduzca el nombre del archivo: "))
-        buscar()
-        break
-
-cl_carpeta = None
-
-if flecha == "C":
-    for carpeta in ruta.rglob(src_carpeta):
+    for carpeta in ruta.rglob(buscar_c):
         if carpeta.is_dir():
-            cl_carpeta = carpeta
+            c_e = carpeta
             break
 
-    if cl_carpeta:
-        print("¡Encontramos tu carpeta!")
-        print(f"Ruta: {cl_carpeta}")
-        print(f"Contenido de: {src_carpeta}")
-        opcion = str.upper((input("Desea reubicar sus archivos Y/N: ")))
-        while opcion != "":
-            if opcion == "Y":
-                for archivo in cl_carpeta.iterdir():
-                    if archivo.is_file():
-                        print(f"\t>{archivo.name}")
-                        i = i + 1
-                accion()
-
-                prototype = Path(input("Ingrese el nombre de nueva la carpeta: "))
-                new_carpeta = Path(cl_carpeta / prototype)
-                new_carpeta.mkdir(exist_ok=True)
-                sufijo = str(input("Que tipos de archivos desea mover a esa carpeta?: "))
-                
-                for archivo in cl_carpeta.iterdir():
-                    if archivo.is_file() and archivo.suffix == (f"{sufijo}"):
-                        shutil.move(archivo, new_carpeta)
-                        print(f"{archivo.name} Exito")
-                
-                        print(f"Archivos transferidos a {new_carpeta}")
-                        print(f"Tipo de archivos: '{sufijo}'")
-                break
-            elif opcion == "N":
-                print("Cerrando...")
-                break      
+    if c_e:
+        print(f"Carpeta: {buscar_c} Encontrada en: {c_e}")
     else:
-        print("Error al buscar la carpeta... Intentalo de nuevo")
+        print("Ups... no la encontre")
+        src_carpeta()
 
-elif flecha == "A":
-    for file in ruta.rglob(src_archive):
-        try:
-            if file.is_file():
-                print("="* 53)
-                print(f"{file.name} Encontrado")
-                print(f"Ruta: {file}")
-                i = i + 1    
-            accion()
+    buscar = str.upper(input("Desea ver el contenido de la carpeta?(Y/N): "))
+    if buscar == "Y":
+    #mostrar contenido de la carpeta
+        for archivo in c_e.iterdir():
+            if archivo.is_file():
+                print(f"\t*{archivo.name}")
 
-        except PermissionError:
-            continue
-    print("="*53)
+        buscar = str.upper(input("Desea reubicar tus archivos a una nueva carpeta?(Y/N): "))
+        if buscar == "Y":
+            folio = Path(input("Como quieres que se llame la carpeta?: "))       
+            new_c = Path(c_e / folio)
+            new_c.mkdir(exist_ok=True)
+            cart = str(input("Que archivos moveras?: "))
+
+            for archivo in c_e.iterdir():
+                if archivo.is_file() and archivo.suffix == (f"{cart}"): 
+                    shutil.move(archivo, new_c)
+                    print(textos[1])
+                    src_carpeta()
+                
+        if buscar == "N":
+            print(textos[4])
+            src_carpeta()
+
+    elif buscar == "N":
+        print(textos[4])
+        src_carpeta()
+    elif buscar == "EXIT":
+        print(textos[5])
+
+def src_archivo():
+    buscar_a = Path(input("Introduzca el nombre del Archivo: "))
+    print(textos[3])
+    print(textos[0])
+    print(textos[3])
+
+    for archivo in ruta.rglob(buscar_a):
+        if archivo.is_file():
+            print(f"{buscar_a} Encontrado en {archivo}")
+
+
+# Bucle para la ejecucion de funciones dependiendo la seleccion en buscar
+if buscar == "C":
+    src_carpeta()
+        
+else:
+    src_archivo()
