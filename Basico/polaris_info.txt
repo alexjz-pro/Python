@@ -1,0 +1,27 @@
+    "POLARIS" es la solucion metodologica a la problematica informatica mas conocida...
+la organizacion y busqueda tanto de archivos como de carpetas. Este se encarga de
+mecanizar y automatizar la busqueda casi instantanea de las carpetas almacenadas en
+nuestros equipos.
+
+    Es importante resaltar que para muchos es bastante molesto y tardado el revisar
+manualmente carpeta a carpeta los archivos internos para la estructuracion de proyectos
+pero con POLARIS el Orden y la Busqueda de archivos se convierte en un modelo facil
+y accesible a la comunidad con solamente la necesidad neta de instalar Python.
+Es un modelo personal pero lo dejo a uso libre de la comunidad y acepto sus propuestas
+para mejorar sus funciones y modalidades de uso.
+
+librerias utilizadas:
+    -Pathlib
+    -Shutil
+
+Objtivos Principales:
+    - Automatizacion de tareas de organizacion con un modelo interactivo y practico.
+
+    - Presentacion de elementos internos de la carpeta seleccionada para facilitar
+    la orientacion ye l conocimiento de los contenidos de las carpetas.
+
+    - Mejor manejo y aprendizaje de metodologias para el funcionamiento de nuestros
+    programas informaticos
+
+    - Fortalecimiento y practica del uso de la terminal en la vida cotidiana
+
