@@ -1,7 +1,7 @@
-from rpython import resolver
+# from rpython import resolver
 from pteory import quiz
-from exercices import ejercicio
-from programar import programa
+# from exercices import ejercicio
+# from programar import programa
 
 def menu():
     i = 0
@@ -17,7 +17,7 @@ def menu():
 
         elif select == "2":
             print("="*64)
-            print("quiz()")
+            quiz()
 
         elif select == "3":
             print("="*64)
