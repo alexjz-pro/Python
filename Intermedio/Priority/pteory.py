@@ -66,16 +66,33 @@ preguntas = [
 textos = ["Valla estuviste cerca.", "Por poco aciertas...", "Venga le estas pillando el rollo", "Ups... Esa no era.", "Intentemozlo de nuevo"]
 
 # opcion con funcion
+# def = esto es una funcion + nombre de la funcion + () + :
+def respuesta_1():
+    print("="*64)
+    print("La respuesta no puede estar Vacia.")
+    print("="*64)
+
+def respuesta_2():
+    print("="*64)
+    print("correcto")
+    print("="*64)
 
 def aleatorio():
     i = random.randint(0, len(textos) -1)
     publico = textos[i]
-    print(f"{publico} -25")
+    print(f"{publico}")
+
+def respuesta_3(pregunta):
+    print("="*64)
+    aleatorio()
+    print("-"*64)
+    print(f"R: {pregunta['respuesta']}")
+    print("="*64)
 
 
 def easy():
     puntaje = 0
-
+    aciertos = 0
     round = 1
 
     random.shuffle(preguntas)
@@ -92,34 +109,31 @@ def easy():
             while True:
                 user = str(input("Ingrese la respuesta: ").strip().lower())
                 if not user:
-                    print("="*64)
-                    print("La respuesta no puede estar Vacia. \n-35pts")
-                    print("="*64)
-                    puntaje = puntaje - 35
+                    respuesta_1()
+                    print("-77")
+                    puntaje = puntaje - 77
                     round = round + 1
                     break
         
                 if user == pregunta['respuesta']:
-                    puntaje = puntaje + 35
-                    print("="*64)
-                    print("correcto +35 pts")
-                    print("="*64)
+                    respuesta_2()
+                    print("+105")
+                    puntaje = puntaje + 105
                     round = round + 1
+                    aciertos = aciertos + 1
                     break
                 else:
-                    puntaje = puntaje - 25
-                    print("="*64)
-                    aleatorio()
-                    print("-"*64)
-                    print(f"R: {pregunta['respuesta']}")
-                    print("="*64)
+                    respuesta_3(pregunta)
+                    print("-53")
+                    puntaje = puntaje - 53
                     round = round + 1
                     break
-    print(f"E N D   G A M E \nPuntaje: {puntaje}")
+    print("="*64)
+    print(f"E N D   G A M E \nPuntaje: {puntaje} \n10/{aciertos}")
 
 def medium ():
     puntaje = 0
-
+    aciertos = 0
     round = 1
 
     random.shuffle(preguntas)
@@ -136,34 +150,31 @@ def medium ():
             while True:
                 user = str(input("Ingrese la respuesta: ").strip().lower())
                 if not user:
-                    print("="*64)
-                    print("La respuesta no puede estar Vacia. \n-35pts")
-                    print("="*64)
-                    puntaje = puntaje - 35
+                    respuesta_1()
+                    print("-50")
+                    puntaje = puntaje - 50
                     round = round + 1
                     break
         
                 if user == pregunta['respuesta']:
-                    puntaje = puntaje + 35
-                    print("="*64)
-                    print("correcto +35 pts")
-                    print("="*64)
+                    respuesta_2()
+                    print("+70")
+                    puntaje = puntaje + 70
                     round = round + 1
+                    aciertos = aciertos + 1
                     break
                 else:
-                    puntaje = puntaje - 25
-                    print("="*64)
-                    aleatorio()
-                    print("-"*64)
-                    print(f"R: {pregunta['respuesta']}")
-                    print("="*64)
+                    respuesta_3(pregunta)
+                    print("-35")
+                    puntaje = puntaje - 35
                     round = round + 1
                     break
-    print(f"E N D   G A M E \nPuntaje: {puntaje}")
+    print("="*64)
+    print(f"E N D   G A M E \nPuntaje: {puntaje} \n15/{aciertos}")
 
 def hard():
     puntaje = 0
-
+    aciertos = 0
     round = 1
 
     random.shuffle(preguntas)
@@ -180,34 +191,31 @@ def hard():
             while True:
                 user = str(input("Ingrese la respuesta: ").strip().lower())
                 if not user:
-                    print("="*64)
-                    print("La respuesta no puede estar Vacia. \n-35pts")
-                    print("="*64)
+                    respuesta_1()
+                    print("-35")
                     puntaje = puntaje - 35
                     round = round + 1
+                    aciertos = aciertos + 1
                     break
         
                 if user == pregunta['respuesta']:
-                    puntaje = puntaje + 35
-                    print("="*64)
-                    print("correcto +35 pts")
-                    print("="*64)
+                    respuesta_2()
+                    print("+50")
+                    puntaje = puntaje + 50
                     round = round + 1
                     break
                 else:
+                    respuesta_3(pregunta)
+                    print("-25")
                     puntaje = puntaje - 25
-                    print("="*64)
-                    aleatorio()
-                    print("-"*64)
-                    print(f"R: {pregunta['respuesta']}")
-                    print("="*64)
                     round = round + 1
                     break
-    print(f"E N D   G A M E \nPuntaje: {puntaje}")
+    print("="*64)
+    print(f"E N D   G A M E \nPuntaje: {puntaje} \n20/{aciertos}")
 
 def expert():
     puntaje = 0
-
+    aciertos = 0
     round = 1
 
     random.shuffle(preguntas)
@@ -224,59 +232,54 @@ def expert():
             while True:
                 user = str(input("Ingrese la respuesta: ").strip().lower())
                 if not user:
-                    print("="*64)
-                    print("La respuesta no puede estar Vacia. \n-35pts")
-                    print("="*64)
+                    respuesta_1()
+                    print("-35")
                     puntaje = puntaje - 35
                     round = round + 1
                     break
         
                 if user == pregunta['respuesta']:
+                    respuesta_2()
+                    print("+35")
                     puntaje = puntaje + 35
-                    print("="*64)
-                    print("correcto +35 pts")
-                    print("="*64)
                     round = round + 1
+                    aciertos = aciertos + 1
                     break
                 else:
+                    respuesta_3(pregunta)
+                    print("-25")
                     puntaje = puntaje - 25
-                    print("="*64)
-                    aleatorio()
-                    print("-"*64)
-                    print(f"R: {pregunta['respuesta']}")
-                    print("="*64)
                     round = round + 1
                     break
-    print(f"E N D   G A M E \nPuntaje: {puntaje}")
+    print("="*64)
+    print(f"E N D   G A M E \nPuntaje: {puntaje} \n30/{aciertos}")
 
 def menu_opc():
-    print("Preguntas Teoricas")
+    print("\tP r e g u n t a s  T e o r i c a s")
+    print("-"*64)
     print("Modos de juego")
     print("1: Facil \n2: Medio \n3: Dificil \n4: Experto \n5: Salir")
 
 def quiz():
     menu_opc()
-    seleccion = int(input("Seleccione su Modo: ").strip())
+    seleccion = input("Seleccione su Modo: ").strip()
 
-    if not seleccion:
+    if seleccion == "":
         print("Debe escoger algun Modo.")
         return
     
-    if seleccion == 1:
+    if seleccion == "1":
         easy()
-    elif seleccion == 2:
+    elif seleccion == "2":
         medium()
-    elif seleccion == 3:
+    elif seleccion == "3":
         hard()
-    elif seleccion == 4:
+    elif seleccion == "4":
         expert()
-    elif seleccion == 5:
+    elif seleccion == "5":
         print("Cerrando...")
     else:
         print("Dato invalido.")
     
-
-
-
 # para hacer una especie de cambio en los textos que aparecen al final
     # error = random.choice(textos)
